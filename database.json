@@ -1,0 +1,55 @@
+{
+  "ram": {
+    "name": "Ram",
+    "age": 28,
+    "role": "Software Engineer",
+    "email": "ram.sharma@example.com",
+    "phone": "+977-9811111111",
+    "city": "Kathmandu"
+  },
+
+  "sita": {
+    "name": "Sita",
+    "age": 26,
+    "role": "Data Analyst",
+    "email": "sita.adhikari@example.com",
+    "phone": "+977-9822222222",
+    "city": "Pokhara"
+  },
+
+  "lakhman": {
+    "name": "Lakhman",
+    "age": 30,
+    "role": "AI Engineer",
+    "email": "lakhman.koirala@example.com",
+    "phone": "+977-9833333333",
+    "city": "Biratnagar"
+  },
+
+  "bharat": {
+    "name": "Bharat",
+    "age": 27,
+    "role": "Cybersecurity Specialist",
+    "email": "bharat.gautam@example.com",
+    "phone": "+977-9844444444",
+    "city": "Lalitpur"
+  },
+
+  "satrudhan": {
+    "name": "Satrudhan",
+    "age": 29,
+    "role": "Cloud DevOps Engineer",
+    "email": "satrudhan.thapa@example.com",
+    "phone": "+977-9855555555",
+    "city": "Chitwan"
+  },
+  
+  "suraj":{
+    "name":"suraj",
+    "age":21,
+    "role":"AI Engineer",
+    "email":"jhasuraj10000@gmail.com",
+    "phone":"982111111188",
+    "city":"Chitwan"
+  }
+}

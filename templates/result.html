@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recognition Result</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            background: #f4f6f9;
+            text-align: center;
+            padding-top: 80px;
+        }
+
+        .card {
+            background: white;
+            width: 350px;
+            margin: auto;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0px 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .title {
+            font-size: 22px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+
+        .success {
+            color: green;
+            font-size: 18px;
+            margin-top: 10px;
+        }
+
+        .name {
+            font-size: 28px;
+            font-weight: bold;
+            margin-top: 15px;
+            color: #2980b9;
+        }
+
+        .btn {
+            margin-top: 20px;
+            padding: 10px 20px;
+            border: none;
+            background: #3498db;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            background: #217dbb;
+        }
+    </style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="title">Face Recognition Result</div>
+
+    <div class="success">{{ result }}</div>
+
+    <div class="name">{{ name }}</div>
+
+    <a href="/recognize_page">
+        <button class="btn">Try Again</button>
+    </a>
+
+</div>
+
+</body>
+</html>
