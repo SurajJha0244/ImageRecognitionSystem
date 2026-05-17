@@ -20,7 +20,7 @@ else:
         "encodings": [],
         "names": []
     }
-
+<!-- 
 # HOME PAGE (optional UI)
 @app.route("/", methods=["GET"])
 def home():
@@ -30,7 +30,7 @@ def home():
         <input type="file" name="image" required>
         <button type="submit">Train Model</button>
     </form>
-    '''
+    ''' -->
 
 
 # TRAIN API

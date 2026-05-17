@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Face Recognition</title>
 
@@ -18,7 +19,7 @@
             background: white;
             padding: 40px;
             border-radius: 15px;
-            box-shadow: 0px 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.2);
             width: 350px;
             text-align: center;
         }
@@ -65,26 +66,56 @@
             text-decoration: underline;
         }
 
+        .result-box {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #ecf9f1;
+            border: 1px solid #27ae60;
+            text-align: left;
+        }
+
+        .error-box {
+            margin-top: 25px;
+            padding: 15px;
+            border-radius: 10px;
+            background: #fdecea;
+            border: 1px solid red;
+            color: red;
+        }
     </style>
 </head>
 
 <body>
 
-<div class="card">
+    <div class="card">
 
-    <h2>Recognize Face</h2>
+        <h2>Recognize Face</h2>
 
-    <form action="/recognize" method="POST" enctype="multipart/form-data">
+        <form action="/recognize" method="POST" enctype="multipart/form-data">
 
-        <input type="file" name="image" required>
+            <input type="file" name="image" required>
 
-        <button type="submit">Recognize</button>
+            <button type="submit">Recognize</button>
 
-    </form>
+        </form>
+        {% if success %}
+        <div class="result-box">
+            <h3>✔ {{ success }}</h3>
+            <p><b>Name:</b> {{ name }}</p>
+        </div>
+        {% endif %}
 
-    <a class="back" href="/">← Back to Home</a>
+        {% if error %}
+        <div class="error-box">
+            ❌ {{ error }}
+        </div>
+        {% endif %}
 
-</div>
+        <a class="back" href="/">← Back to Home</a>
+
+    </div>
 
 </body>
+
 </html>
