@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()  
 from flask import Flask, request, render_template, redirect, session
 import os
 from flask_sqlalchemy import SQLAlchemy
@@ -20,12 +22,10 @@ db_path=os.path.join(BASE_DIR,"database","database.db")
 
 # Database Connection
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SECRET_KEY'] = 'thisisasecretkey'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'fallback-dev-key')
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 db = SQLAlchemy(app)
-app.secret_key = 'thisisasecretkey'
-
 
 # Creating Database 
 
