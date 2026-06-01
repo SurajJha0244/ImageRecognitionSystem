@@ -1,67 +1,46 @@
 import face_recognition
-import pickle
-import json
-import os
-import webb
-
-# Load model
-with open("model.pkl", "rb") as f:
-    model = pickle.load(f)
-
-# Load database
-with open("database.json", "r") as f:
-    database = json.load(f)
+import numpy as np
 
 
-# USER INPUT IMAGE FILE
+def recognize_face(file, model):
 
-file_name = input("Enter image name: ")
-image_path = os.path.join("test", file_name)
- 
-# Check file exists
-if not os.path.exists(image_path):
-    print("File not found!")
-    exit()
+    image = face_recognition.load_image_file(file)
 
-# Load image
-image = face_recognition.load_image_file(image_path)
+    encodings = face_recognition.face_encodings(image)
 
-# Encode face
-encodings = face_recognition.face_encodings(image)
+    if len(encodings) == 0:
 
-if len(encodings) == 0:
-    print("No face found in image")
-    exit()
+        return {
+            "status": "error",
+            "message": "No face found"
+        }
 
-test_encoding = encodings[0]
+    test_encoding = encodings[0]
 
-# Compare with trained faces
-matches = face_recognition.compare_faces(model["encodings"], test_encoding)
+    face_distances = face_recognition.face_distance(
+        model["encodings"],
+        test_encoding
+    )
 
-name = "Unknown"
+    if len(face_distances) == 0:
 
-if True in matches:
-    index = matches.index(True)
-    name = model["names"][index]
+        return {
+            "status": "error",
+            "message": "No trained faces found"
+        }
 
-    print("\nFace Recognized:", name)
+    best_index = np.argmin(face_distances)
 
-    # Normalize key
-    name = name.lower().strip()
+    if face_distances[best_index] < 0.5:
 
-    # Fetch from database
-    if name in database:
-        details = database[name]
+        name = model["names"][best_index]
 
-        print("\n--- Person Details ---")
-        print("Name:", details.get("name"))
-        print("Age:", details.get("age"))
-        print("Role:", details.get("role"))
-        print("Email:", details.get("email"))
-        print("Phone:",details.get("phone"))
-        print("City:",details.get("city"))
-    else:
-        print("No details found in database.json")
+        return {
+            "status": "success",
+            "name": name
+        }
 
-else:
-    print("No match found")
+    return {
+        "status": "error",
+        "message": "No Match Found"
+    }
